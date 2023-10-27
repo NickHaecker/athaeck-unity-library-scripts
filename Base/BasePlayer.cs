@@ -15,10 +15,7 @@ public abstract class BasePlayer : MonoBehaviour
     public abstract void TakeBaseGameController(BaseGameController baseGameController);
     protected abstract void OnLoad();
     protected abstract void OnSave();
-    public List<AbilityData> GetAbilitys()
-    {
-        return BaseGameController.Instance.GetGameController<GameController>().GetAbilities(playerData.Abilitys);
-    }
+
     public PlayerData GetPlayerData()
     {
         return playerData;

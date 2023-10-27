@@ -14,7 +14,7 @@ public enum AbilityEvents
 public abstract class BaseAbility : MonoBehaviour
 {
     [SerializeField]
-    protected Avatar character;
+    private BaseAvatar _avatar;
     [SerializeField]
     protected CharacterController characterController;
     [SerializeField]
@@ -57,8 +57,8 @@ public abstract class BaseAbility : MonoBehaviour
 
     public virtual void Init(AbilityData data) {
         _characterOccupationController = GetComponent<BaseOccupationController>();
-        character = GetComponent<Avatar>();
-        character.Collision += OnCollision;
+        _avatar = GetComponent<BaseAvatar>();
+        _avatar.AddCollisionListener(OnCollision);
         characterController = GetComponent<CharacterController>();
         _characterAnimationController = GetComponent<BaseAnimationController>();
         characterController = gameObject.GetComponent<CharacterController>();
@@ -94,6 +94,9 @@ public abstract class BaseAbility : MonoBehaviour
     {
         return GetComponent<T>();
     }
-
+    protected T avatar<T>() where T : BaseAvatar
+    {
+        return (T)_avatar;
+    }
 
 }
