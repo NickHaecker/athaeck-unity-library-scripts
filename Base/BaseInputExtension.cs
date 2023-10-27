@@ -55,13 +55,13 @@ public abstract class BaseInputExtension : MonoBehaviour, InputSubscriber, Befor
 
     public void OnBeforeSceneStart(BaseSceneController baseSceneController)
     {
-        InputController inputController = baseSceneController.GetComponentInChildren<InputController>();
+        BaseInputController inputController = baseSceneController.GetComponentInChildren<BaseInputController>();
         SubscribeComponent(inputController);
     }
 
     public void OnBeforeSceneClose(BaseSceneController baseSceneController)
     {
-        InputController inputController = baseSceneController.GetComponentInChildren<InputController>();
+        BaseInputController inputController = baseSceneController.GetComponentInChildren<BaseInputController>();
         UnsubscribeComponent(inputController);
     }
 }
