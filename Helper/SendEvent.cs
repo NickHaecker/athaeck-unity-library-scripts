@@ -9,14 +9,6 @@ public class SendEvent
     public string eventName;
     public Dictionary<string, object> data;
 
-    public string JsonString
-    {
-        get
-        {
-            return JsonConvert.SerializeObject(this); ;
-        }
-    }
-
     public SendEvent(string name)
     {
         eventName = name;
