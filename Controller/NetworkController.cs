@@ -37,6 +37,22 @@ public class NetworkController : BaseNetworkController
         socket.OnClose -= OnClose;
         AfterWebSocketDisconnected?.Invoke(this);
     }
+    public override void ConnectScene()
+    {
+        if(socket != null && socket.IsAlive)
+        {
+            BeforeWebsocketConnected?.Invoke(this);
+            AfterWebSocketConnected?.Invoke(socket);
+        }
+    }
+    public override void DisconnectScene()
+    {
+        if( socket != null && socket.IsAlive)
+        {
+            BeforeWebSocketDisconnected?.Invoke(socket);
+            AfterWebSocketDisconnected?.Invoke(this);
+        }
+    }
 
     protected override void OnClose(object sender, CloseEventArgs e)
     {

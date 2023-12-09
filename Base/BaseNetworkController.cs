@@ -25,7 +25,9 @@ public abstract class BaseNetworkController : MonoBehaviour
     public Action<ReceivedEvent> TakeEvent;
 
     public abstract void Connect();
+    public abstract void ConnectScene();
     public abstract void Disconnect();
+    public abstract void DisconnectScene();
     protected abstract void OnMessage(object sender, MessageEventArgs e);
     protected abstract void OnClose(object sender, CloseEventArgs e);
     protected abstract void OnOpen(object sender, EventArgs e);

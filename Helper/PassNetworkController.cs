@@ -5,4 +5,5 @@ using UnityEngine;
 public interface PassNetworkController
 {
     public void TakeBaseNetworkController(BaseNetworkController baseNetworkController);
+    public void RemoveBaseNetworkController(BaseNetworkController baseNetworkController);
 }
