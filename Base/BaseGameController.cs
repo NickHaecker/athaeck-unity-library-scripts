@@ -52,6 +52,7 @@ public abstract class BaseGameController : MonoBehaviour
     protected abstract void OnInitGame();
     public abstract void TakeSceneController(BaseSceneController baseSceneController);
     public abstract void EndSceneController(BaseSceneController baseSceneController);
+    public abstract void SwitchScene(BaseSceneData sceneData);
     protected abstract void OnEndGame();
 
     public abstract T GetGameController<T>() where T : BaseGameController;

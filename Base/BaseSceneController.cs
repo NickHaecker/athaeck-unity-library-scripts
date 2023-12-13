@@ -13,6 +13,10 @@ public abstract class BaseSceneController : MonoBehaviour
     public Action<BaseSceneController> SceneClose;
     public Action<BaseSceneController> AfterSceneClose;
 
+    [SerializeField]
+    public BaseSceneData Destination;
+
+
     private void Start()
     {
         foreach (BeforeSceneStart beforeSceneStart in GetComponentsInChildren<BeforeSceneStart>(true))

@@ -9,9 +9,9 @@ public static class SceneManagerController
     {
         SceneManager.LoadScene(name, GetSceneMode(additiv));
     }
-    public static void LoadAceneAsync(string name, bool additiv)
+    public static AsyncOperation LoadAceneAsync(string name, bool additiv)
     {
-        SceneManager.LoadSceneAsync(name, GetSceneMode(additiv));
+        return SceneManager.LoadSceneAsync(name, GetSceneMode(additiv));
     }
     public static AsyncOperation UnloadSceneAsync(string name)
     {
