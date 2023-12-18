@@ -33,6 +33,8 @@ public abstract class BaseNetworkController : MonoBehaviour
     protected abstract void OnOpen(object sender, EventArgs e);
     protected abstract void OnError(object sender, ErrorEventArgs e);
 
+    public WebSocket GetWebSocket() { return socket; }
+
     protected void OnConnection(WebSocket socket)
     {
         connected = true;
