@@ -32,6 +32,8 @@ public class BaseUiController : MonoBehaviour
 
     public void TakeBaseUi(BaseUi baseUi)
     {
+        Debug.Log(50);
+        Debug.Log(baseUi.Data.ID);
         OpenUi += baseUi.OnOpenUi;
         CloseUi += baseUi.OnCloseUi;
 
@@ -41,6 +43,8 @@ public class BaseUiController : MonoBehaviour
     }
     public void RemoveBaseUi(BaseUi baseUi)
     {
+        Debug.Log(100);
+        Debug.Log(baseUi.Data.ID);
         OpenUi -= baseUi.OnOpenUi;
         CloseUi -= baseUi.OnCloseUi;
 
@@ -67,6 +71,7 @@ public class BaseUiController : MonoBehaviour
     }
     protected virtual void ValidateOverlay(BaseUi baseUi, UI_STATE state)
     {
+        Debug.Log(8);
         if (state.Equals(UI_STATE.OPEN) && baseUi.Data.UiType.Equals(UIType.OVERLAY))
         {
             if(_defaultUi == null)
@@ -97,12 +102,16 @@ public class BaseUiController : MonoBehaviour
     }
     protected virtual void OnUpdateUi(BaseUi baseUi, UI_STATE state)
     {
+        Debug.Log(99);
+        Debug.Log(baseUi);
+        Debug.Log(state);
         if (state.Equals(UI_STATE.CLOSE))
         {
             CloseUi?.Invoke(baseUi);
         }
         if (state.Equals(UI_STATE.OPEN))
         {
+            Debug.Log(3);
             OpenUi?.Invoke(baseUi);
         }
     }
@@ -113,6 +122,8 @@ public class BaseUiController : MonoBehaviour
     }
     public void HandleOpenUI(BaseUi ui)
     {
+        Debug.Log(ui);
+        Debug.Log(UpdateUi);
         UpdateUi?.Invoke(ui, UI_STATE.OPEN);
     }
     public void HandleCloseUI(UiData ui)

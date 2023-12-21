@@ -11,6 +11,8 @@ public abstract class BaseUi : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(33);
+        Debug.Log(data.ID);
         BaseGameController.Instance.UiController.TakeBaseUi(this);
 
         OnStart();
@@ -40,10 +42,14 @@ public abstract class BaseUi : MonoBehaviour
 
     public void OnOpenUi(BaseUi baseUi)
     {
+        Debug.Log(7);
+        Debug.Log(baseUi.Data.ID);
+        Debug.Log(data.ID);
         if (baseUi.Data.ID != data.ID)
         {
             return;
         }
+
         ValidateStateChange(true);
     }
     public void OnCloseUi(BaseUi baseUi)
