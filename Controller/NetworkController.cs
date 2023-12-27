@@ -67,7 +67,6 @@ public class NetworkController : BaseNetworkController
     protected override void OnMessage(object sender, MessageEventArgs e)
     {
         ReceivedEvent response = ReceivedEvent.FromJson(e.Data);
-        Debug.Log(response.eventName);
         _receivedEvents.Enqueue(response);
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseUi : MonoBehaviour
+public abstract class BaseUi : MonoBehaviour, BeforeSceneStart, BeforeSceneClose
 {
     [SerializeField]
     protected UiData data;
@@ -11,9 +11,7 @@ public abstract class BaseUi : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(33);
-        Debug.Log(data.ID);
-        BaseGameController.Instance.UiController.TakeBaseUi(this);
+       
 
         OnStart();
     }
@@ -31,7 +29,7 @@ public abstract class BaseUi : MonoBehaviour
 
     private void OnDestroy()
     {
-        BaseGameController.Instance.UiController.RemoveBaseUi(this);
+        //BaseGameController.Instance.UiController.RemoveBaseUi(this);
         Destroy();
     }
 
@@ -42,9 +40,6 @@ public abstract class BaseUi : MonoBehaviour
 
     public void OnOpenUi(BaseUi baseUi)
     {
-        Debug.Log(7);
-        Debug.Log(baseUi.Data.ID);
-        Debug.Log(data.ID);
         if (baseUi.Data.ID != data.ID)
         {
             return;
@@ -96,4 +91,14 @@ public abstract class BaseUi : MonoBehaviour
     protected abstract void AfterUiOpened();
     protected abstract void AfterUiClosed();
     protected abstract void BeforeUiClosed();
+
+    public void OnBeforeSceneStart(BaseSceneController baseSceneController)
+    {
+        BaseGameController.Instance.UiController.TakeBaseUi(this);
+    }
+
+    public void OnBeforeSceneClose(BaseSceneController baseSceneController)
+    {
+        BaseGameController.Instance.UiController.RemoveBaseUi(this);
+    }
 }
